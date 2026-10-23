@@ -1,0 +1,45 @@
+.iteminfromationWrapper {
+    min-height: 100vh;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.imageWrapper {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 60%;
+    border: 1px solid black;
+    margin-inline: auto;
+
+    img {
+        width: 100%;
+        object-fit: fill;
+    }
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    h2 {
+        align-self: flex-start;
+        font-weight: 600;
+    }
+
+    .ingredientsTable {
+        border-collapse: collapse;
+        
+
+        td,
+        th {
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+        }
+    }
+}

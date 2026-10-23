@@ -1,0 +1,25 @@
+@use "./variables.module.scss" as *;
+
+.mainWrapper {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-block: 10px;
+}
+
+.listRender {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: min(300px);
+    padding: 20px;
+    grid-gap: 30px;
+}
+
+.listWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

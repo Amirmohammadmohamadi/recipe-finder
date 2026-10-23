@@ -1,0 +1,61 @@
+@use "../../app/variables.module.scss" as *;
+
+.inputContainer {
+    background-color: $search-bg-color;
+    border-radius: 30px;
+    box-shadow: 0 0 1px #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+    min-height: 50px;
+    min-width: 55%;
+
+    input {
+        outline: none;
+        font-size: larger;
+        font-weight: 600;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        padding-block: auto;
+        flex-grow: 1;
+        
+        
+        &::placeholder {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.583);
+            transform: translateY(-3px);
+        }
+    }
+    
+    .leftSection {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-grow: 1;
+    }
+
+    .rightSection {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .button {
+        background-color: #a83301;
+    }
+
+    .crossWrapper {
+        min-width: 12px;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 50%;
+        transition: background-color 200ms linear;
+
+        &:hover {
+            background-color: #cccccc7b;
+        }
+    }
+}

@@ -1,0 +1,32 @@
+.resultPageContainer {
+    min-height: 100vh;
+    margin-top: 100px;
+    width: 100%;
+}
+
+.listRender {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: min(300px);
+    padding: 20px;
+    grid-gap: 30px;
+    width: 100%;
+}
+
+.listWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width:900px) {
+    .listRender {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media (max-width:500px) {
+    .listRender {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
