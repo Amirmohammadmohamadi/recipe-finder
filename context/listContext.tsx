@@ -5,7 +5,7 @@ import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
 const listContext = createContext<ListContextType | null>(null);
 
-const storedList = localStorage.getItem(List_Storage);
+const storedList = sessionStorage.getItem(List_Storage);
 
 const initialList = () => {
     if(!storedList) return [];

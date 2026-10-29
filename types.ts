@@ -24,6 +24,7 @@ export interface ListContextType {
 export interface ItemType {
     image: string;
     title: string;
+    summary: string;
     extendedIngredients: IngredientsType[];
 };
 
@@ -34,4 +35,9 @@ export interface IngredientsType {
     unit: string;
     id: string;
     image: string;
+}
+
+export interface FaviorateContextType{
+    state: IngredientsType[];
+    setState: Dispatch<SetStateAction<ListType[]>>;
 }

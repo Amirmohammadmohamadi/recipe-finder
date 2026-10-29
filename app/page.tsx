@@ -11,23 +11,22 @@ import { useList } from "@/context/listContext";
 export default function Home() {
   const {state:inputValue,setState:setInputValue} = useSearchValue();
   const {list , setList} = useList();
-  const [number,setNumber] = useState(12);
   const router = useRouter();
 
   const buttonClickHandler = async () => {
     if(!inputValue) return;
 
     try {
-      const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${inputValue}&number=${number}&apiKey=${API_KEY}`)
+      const res = await fetch(`https://api.spoonacular.com/recipes/complexSearch?query=${inputValue}&number=100&apiKey=${API_KEY}`)
       const data = await res.json();
 
       if(data.results.length) {
         setList(data.results);
-        localStorage.setItem(List_Storage,JSON.stringify(data.results));
+        sessionStorage.setItem(List_Storage,JSON.stringify(data.results));
         router.push("/resultPage");
       }
     } catch(err) {
-      console.error("error in fetching data from server");
+      console.error("error in fetching data from server in main page.");
     }
   }
 

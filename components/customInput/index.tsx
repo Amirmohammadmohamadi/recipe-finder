@@ -22,7 +22,10 @@ const CustomInput = ({type="text" ,  onChange , value , placeholder , buttonOnCl
         </div>
         <div className={styles.rightSection}>
             {value && <div className={styles.crossWrapper} onClick={onClick}><CrossIcon size={12} color="#00000"/></div>}
-            <CustomButton title={[<SearchIcon size={15} color="white"/>,"Find Recipes"]} onClick={buttonOnClick}/>
+            <CustomButton 
+                title={[<SearchIcon size={15} color="white"/>,"Find Recipes"]} 
+                onClick={buttonOnClick}
+            />
         </div>
     </div>
 };

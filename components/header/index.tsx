@@ -9,8 +9,8 @@ const Header = () => {
         </div>
         <div className={styles.navBar}>
             <Link href="/">Home</Link>
-            <Link href="/">Favorite</Link>
-            <Link href="/">About</Link>
+            <Link href="/favPage">Favorite</Link>
+            <Link href="/about">About Us</Link>
         </div>
     </div>
 };

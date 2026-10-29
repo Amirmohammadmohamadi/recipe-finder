@@ -4,6 +4,7 @@ import styles from "./itemId.module.scss";
 import { useParams } from "next/navigation";
 import { API_KEY } from "@/constants";
 import { ItemType } from "@/types";
+import IngredientCard from "@/components/ingredientCard";
 
 const itemDetail = () => {
     const params = useParams();
@@ -24,12 +25,25 @@ const itemDetail = () => {
     },[])
 
     return <div className={styles.iteminfromationWrapper}>
+        <div className={styles.title}>
+            <h1>{item?.title}</h1>
+            <p dangerouslySetInnerHTML={{__html:item?.summary ?? ""}}></p>
+        </div>
         <div className={styles.imageWrapper}>
             <img src={item?.image} alt={item?.title} />
         </div>
-        <h1>{item?.title}</h1>
         <div className={styles.ingredients}>
             <h2>Ingredients</h2>
+            <div className={styles.ingredientsContainer}>
+                {item?.extendedIngredients?.map(i => 
+                    <IngredientCard 
+                        img={i.name}
+                        material={i.image}
+                        measure={i.amount}
+                        key={i.id}
+                    />
+                )}
+            </div>
             <table className={styles.ingredientsTable}>
                 <thead>
                     <tr>

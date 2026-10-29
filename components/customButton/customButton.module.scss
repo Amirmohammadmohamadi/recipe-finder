@@ -21,4 +21,9 @@
         gap: 5px;
 
     }
+
+    .secondery {
+        @extend .primary;
+        margin-inline: auto;
+    }
 }
