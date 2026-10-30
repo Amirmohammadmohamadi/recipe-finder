@@ -2,37 +2,36 @@
 import styles from "./resultPage.module.scss";
 import Card from "@/components/card";
 import CustomButton from "@/components/customButton";
-import { useFav } from "@/context/favoriteContext";
+import { Faviorate_Storage } from "@/constants";
 import { useList } from "@/context/listContext";
-import { ListType } from "@/types";
-import { useState } from "react";
+import { ListItemType } from "@/types";
+import { useEffect, useState } from "react";
 
 const resultPage = () => {
-    const { list } = useList();
+    const { list:{items:listItems , favItems} } = useList();
     const [number,setNumber] = useState(12);
-    const {state:favList , setState:setFavList} = useFav();
 
-    console.log("list:",list);
 
     const handleClick = () => {
       setNumber(prev => prev+12);
     };
-
-    const handleFavClick = (item:ListType) => {
-      setFavList(prev => [...prev,item]);
-    }
+    
+    useEffect(()=> {
+      console.log("favItems:",favItems);
+      localStorage.setItem(Faviorate_Storage,JSON.stringify(favItems));
+    },[favItems]);
     
     return <div className={styles.resultPageContainer}>
-        {list?.length ? <div className={styles.listWrapper}>
+        {listItems?.length ? <div className={styles.listWrapper}>
         <div className={styles.listRender}>
-          {list.slice(0,number).map((item:ListType) => 
+          {listItems.slice(0,number).map((item:ListItemType) => 
             <Card 
               image={item.image}
               title={item.title}
               key={item.id}
               href={`/resultPage/${item.id}`}
-              id={item.id}
-              favClick={()=>handleFavClick(item)}
+              item={item}
+              favButtonState={true}
             />
         )}
         </div>

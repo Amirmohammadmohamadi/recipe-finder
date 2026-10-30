@@ -1,18 +1,17 @@
 "use client";
 import CustomInput from "@/components/customInput";
 import styles from "./homePage.module.scss";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { API_KEY, List_Storage } from "@/constants";
-import Header from "@/components/header";
 import { useSearchValue } from "@/context/searchContext";
 import { useList } from "@/context/listContext";
 
 export default function Home() {
   const {state:inputValue,setState:setInputValue} = useSearchValue();
-  const {list , setList} = useList();
+  const { list , setList } = useList();
   const router = useRouter();
 
+  console.log("list:",list);
   const buttonClickHandler = async () => {
     if(!inputValue) return;
 
@@ -21,7 +20,7 @@ export default function Home() {
       const data = await res.json();
 
       if(data.results.length) {
-        setList(data.results);
+        setList(prev => ({...prev , items:data.results}));
         sessionStorage.setItem(List_Storage,JSON.stringify(data.results));
         router.push("/resultPage");
       }

@@ -1,27 +1,40 @@
 "use client"
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import styles from "./card.module.scss";
 import Link from "next/link";
 import { TiHeartOutline } from "react-icons/ti";
 import { useFav } from "@/context/favoriteContext";
+import { useList } from "@/context/listContext";
+import { ListItemType } from "@/types";
 
 export type CardPropType = {
     image: string;
     title: string;
     href: string;
-    id: number;
+    item: ListItemType;
+    favButtonState: boolean;
     onClick?: MouseEventHandler;
-    favClick?: MouseEventHandler;
 }
 
 export type ItemType = Omit<CardPropType,"onClick"> & {id:string};
 
-const Card = ({image , title  , href , id , onClick , favClick}:CardPropType) => {
+const Card = ({image , title  , href , onClick , item , favButtonState}:CardPropType) => {
 
-    const {state:favList} =useFav();
+    const { list:{ favItems } , setList } = useList();
+    const [ state, setState] = useState(false);
+
+    const handleFavClick = (id:number) => {
+        setState(!state);
+        if(state) {
+            setList(prev => ({...prev , favItems:[...favItems,item]}));
+        }else {
+            existInFav(id) ? setList(prev => ({...prev , favItems: favItems.filter(i=> i.id!==id)}))
+            : null;
+        }
+      };
 
     const existInFav = (id:number) => {
-        const result = favList.find(i => Number(i.id) === id);
+        const result = favItems.find(i => i.id === id);
         if(result) return true;
         return false;
     }
@@ -32,9 +45,9 @@ const Card = ({image , title  , href , id , onClick , favClick}:CardPropType) =>
         </div>
         <h2>{title}</h2>
         <Link href={href} className={styles.link}>Cook ►</Link>
-        <div className={styles.faviorateButton} onClick={favClick}>
-            <TiHeartOutline size={10} fill={existInFav(id) ? "red" : "transparent"}/>
-        </div>
+        {favButtonState ? <div className={styles.faviorateButton} onClick={() => handleFavClick(item.id)}>
+             <TiHeartOutline size={15} fill={existInFav(item?.id) && "red"}/>
+        </div> : null}
     </div>
 };
 

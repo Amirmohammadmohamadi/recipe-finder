@@ -6,15 +6,21 @@
     padding: 10px;
     background-color: $search-bg-color;
     gap: 15px;
+    border-radius: 5px;
 
     .title {
         display: flex;
         align-items: center;
         gap: 5px;
+
         span {
             color: $button-bg-color;
             font-size: 20px;
             font-weight: 800;
+        }
+
+        p {
+            font-size: 13px;
         }
     }
 }

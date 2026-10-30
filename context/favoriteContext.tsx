@@ -1,5 +1,6 @@
+"use client";
 import { Faviorate_Storage } from "@/constants";
-import { FaviorateContextType, IngredientsType } from "@/types";
+import { FaviorateContextType , ListItemType } from "@/types";
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
 interface PropType {
@@ -8,17 +9,15 @@ interface PropType {
 
 const FavoriteContext = createContext<FaviorateContextType | null>(null);
 
-const initialize = () => {
-    const storege = localStorage.getItem(Faviorate_Storage);
+const storege = localStorage.getItem(Faviorate_Storage);
 
-    if(storege) {
-        return JSON.parse(storege);
-    }
+const initialize = () => {
+    if(storege) return JSON.parse(storege);
     return [];
 }
 
 const FavoriteContextProvider = ({ children }:PropType) => {
-    const [state , setState] = useState<IngredientsType[]>(initialize);
+    const [state , setState] = useState<ListItemType[]>(initialize);
 
     const value = useMemo(()=>(
         { state ,setState}

@@ -1,19 +1,23 @@
 "use client";
-import { List_Storage } from "@/constants";
+import { Faviorate_Storage, List_Storage } from "@/constants";
 import { ListContextType, ListType } from "@/types";
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
 const listContext = createContext<ListContextType | null>(null);
 
 const storedList = sessionStorage.getItem(List_Storage);
+const storedFavList = localStorage.getItem(Faviorate_Storage);
 
 const initialList = () => {
-    if(!storedList) return [];
-    return JSON.parse(storedList);
+    const state = {
+        items: storedList ? JSON.parse(storedList) : [], 
+        favItems: storedFavList ? JSON.parse(storedFavList) : [],
+    };
+    return state;
 }
 
 const ListContextProvider = ({children}:{children:ReactNode}) => {
-    const [list,setList] = useState<ListType[]>(initialList);
+    const [ list , setList ] = useState<ListType>(initialList);
 
     const value = useMemo(()=>({
         list,setList

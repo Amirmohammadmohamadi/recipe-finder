@@ -1,6 +1,21 @@
+@use "../../app/variables.module.scss" as *;
+
 .favPageContainer {
     width: 100%;
     min-height: 100vh;
-    margin-top: 80px;
     padding-inline: 30px;
+    padding-bottom: 30px;
+    padding-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.emptyList {
+    color: $button-bg-color;
+    font-size: 2.5em;
+    font-weight: 800;
+    filter: drop-shadow(0 2px 1px black);
 }
