@@ -15,6 +15,11 @@
     }
 }
 
+.favButtonWrapper {
+    width: 100%;
+    direction: rtl;
+}
+
 .imageWrapper {
     overflow: hidden;
     border-radius: 10px;
@@ -78,6 +83,7 @@
 
 .downInfo {
     display: flex;
+    align-items: flex-start;
     gap: 15px;
 
     .analyzedInstructions {
@@ -87,42 +93,69 @@
 
         .stepWrapper {
             background-color: $search-bg-color;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.526);
+            border-radius: 6px;
             padding: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
 
             .topSection {
                 display: flex;
+                align-items: flex-start;
                 gap: 5px;
 
                 .stepNumber {
-                    padding: 10px;
+                    min-width: 25px;
                     border-radius: 50%;
                     background-color: $button-bg-color;
                     color: $card-bg-color;
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    aspect-ratio: 1/1;
                 }
 
             }
 
             .midSection {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
 
                 .equipment{
                     display: flex;
+                    align-items: center;
                     flex-wrap: wrap;
                     gap: 10px;
 
-                    .detail {
-                        background-color: $bg-color;
-                        color: $button-bg-color;
-                        padding: 6px;
-                        border-radius: 30px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        box-shadow: 0 0 5px black , inset 0 0 5px black;
+                    p {
+                        font-size: 15px;
+                        font-weight: 800;
                     }
+                }
 
+                .Stepingredients {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 10px;
+
+                    p {
+                        font-size: 15px;
+                        font-weight: 800;
+                    }
+                }
+
+                .detail {
+                    background-color: $bg-color;
+                    color: $button-bg-color;
+                    padding: 10px;
+                    border-radius: 15px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: 0 0 5px black , inset 0 0 5px rgb(255, 255, 255);
                 }
             }
         }

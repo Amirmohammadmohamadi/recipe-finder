@@ -3,9 +3,9 @@ import { MouseEventHandler, useEffect, useState } from "react";
 import styles from "./card.module.scss";
 import Link from "next/link";
 import { TiHeartOutline } from "react-icons/ti";
-import { useFav } from "@/context/favoriteContext";
 import { useList } from "@/context/listContext";
 import { ListItemType } from "@/types";
+import { Faviorate_Storage } from "@/constants";
 
 export type CardPropType = {
     image: string;
@@ -31,7 +31,8 @@ const Card = ({image , title  , href , onClick , item , favButtonState}:CardProp
             existInFav(id) ? setList(prev => ({...prev , favItems: favItems.filter(i=> i.id!==id)}))
             : null;
         }
-      };
+        localStorage.setItem(Faviorate_Storage,JSON.stringify(favItems));
+    };
 
     const existInFav = (id:number) => {
         const result = favItems.find(i => i.id === id);
@@ -46,7 +47,7 @@ const Card = ({image , title  , href , onClick , item , favButtonState}:CardProp
         <h2>{title}</h2>
         <Link href={href} className={styles.link}>Cook ►</Link>
         {favButtonState ? <div className={styles.faviorateButton} onClick={() => handleFavClick(item.id)}>
-             <TiHeartOutline size={15} fill={existInFav(item?.id) && "red"}/>
+             <TiHeartOutline size={15} fill={existInFav(item?.id) ? "red" : "black"}/>
         </div> : null}
     </div>
 };

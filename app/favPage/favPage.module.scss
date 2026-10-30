@@ -19,3 +19,22 @@
     font-weight: 800;
     filter: drop-shadow(0 2px 1px black);
 }
+
+.cardWrapper {
+    position: relative;
+}
+
+.unbookmarkWrapper {
+    padding: 6px;
+    border-radius: 50%;
+    background-color: #cccccc82;
+    cursor: pointer;
+    transition: opacity 200ms linear;
+    position: absolute;
+    top: 15px;
+    left: 18px;
+
+    &:hover {
+        opacity: 0.92;
+    }
+}

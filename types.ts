@@ -38,10 +38,12 @@ export interface ItemType {
     title: string;
     summary: string;
     extendedIngredients: IngredientsType[];
+    id?: number;
     cookingMinutes?: number;
     healthScore?: number;
     pricePerServing?: number;
     preparationMinutes?: number;
+    instructions?: string;
     analyzedInstructions?: { steps: AnalyzedInstructionsSteps[]}[];
 };
 

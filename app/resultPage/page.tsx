@@ -17,7 +17,6 @@ const resultPage = () => {
     };
     
     useEffect(()=> {
-      console.log("favItems:",favItems);
       localStorage.setItem(Faviorate_Storage,JSON.stringify(favItems));
     },[favItems]);
     

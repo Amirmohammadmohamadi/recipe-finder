@@ -4,7 +4,6 @@ import "./globals.css";
 import SearchValueContextProvider from "@/context/searchContext";
 import ListContextProvider from "@/context/listContext";
 import Header from "@/components/header";
-import FavoriteContextProvider from "@/context/favoriteContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,9 +33,7 @@ export default function RootLayout({
           >
             <SearchValueContextProvider>
               <ListContextProvider>
-                <FavoriteContextProvider>
                   {children}
-                </FavoriteContextProvider>
                 <Header />
               </ListContextProvider>
             </SearchValueContextProvider>
