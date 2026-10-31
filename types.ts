@@ -39,6 +39,7 @@ export interface ItemType {
     summary: string;
     extendedIngredients: IngredientsType[];
     id?: number;
+    unit?: string;
     cookingMinutes?: number;
     healthScore?: number;
     pricePerServing?: number;

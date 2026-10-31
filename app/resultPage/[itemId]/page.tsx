@@ -11,9 +11,6 @@ import CustomButton from "@/components/customButton";
 import { useList } from "@/context/listContext";
 import { GoBookmarkFill , GoBookmarkSlashFill  } from "react-icons/go";
 
-
-
-
 const itemDetail = () => {
     const params = useParams();
     const [item,setItem] = useState<ItemType | null>(null);
@@ -99,6 +96,7 @@ const itemDetail = () => {
                         <IngredientCard 
                             material={i.name}
                             measure={Number(i.amount).toFixed(1)}
+                            unit={i.unit}
                             key={i.id}
                         />
                     )}

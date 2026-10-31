@@ -24,14 +24,16 @@ const Card = ({image , title  , href , onClick , item , favButtonState}:CardProp
     const [ state, setState] = useState(false);
 
     const handleFavClick = (id:number) => {
-        setState(!state);
-        if(state) {
-            setList(prev => ({...prev , favItems:[...favItems,item]}));
-        }else {
-            existInFav(id) ? setList(prev => ({...prev , favItems: favItems.filter(i=> i.id!==id)}))
-            : null;
-        }
-        localStorage.setItem(Faviorate_Storage,JSON.stringify(favItems));
+        setState(prev => {
+            if(!prev) {
+                setList(prev => ({...prev , favItems:[...favItems,item]}));
+            }else {
+                existInFav(id) ? setList(prev => ({...prev , favItems: favItems.filter(i=> i.id!==id)}))
+                : null;
+            }
+            localStorage.setItem(Faviorate_Storage,JSON.stringify(favItems));
+            return !prev
+        });
     };
 
     const existInFav = (id:number) => {
@@ -45,7 +47,7 @@ const Card = ({image , title  , href , onClick , item , favButtonState}:CardProp
             <img src={image}/>
         </div>
         <h2>{title}</h2>
-        <Link href={href} className={styles.link}>Cook ►</Link>
+        <div className={styles.link}><Link href={href} style={{position:"absolute",bottom:"10px",right:"10px"}}>Cook►</Link></div>
         {favButtonState ? <div className={styles.faviorateButton} onClick={() => handleFavClick(item.id)}>
              <TiHeartOutline size={15} fill={existInFav(item?.id) ? "red" : "black"}/>
         </div> : null}

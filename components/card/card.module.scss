@@ -10,6 +10,7 @@
     background-color: $card-bg-color;
     position: relative;
     transition: scale 300ms linear;
+    height: 100%;
 
     &:hover {
         scale: 0.95;
@@ -41,10 +42,10 @@
         padding-inline: 5px;
         font-size: 16px;
         font-weight: 800;
-        position: absolute;
-        bottom: 20px;
-        right: 10px;
         color: $button-bg-color;
+        align-self: flex-end;
+        justify-self: flex-end;
+        flex-grow: 1;
     }
 
     .faviorateButton {

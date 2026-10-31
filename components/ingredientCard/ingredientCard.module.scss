@@ -13,10 +13,19 @@
         align-items: center;
         gap: 5px;
 
-        span {
-            color: $button-bg-color;
-            font-size: 20px;
-            font-weight: 800;
+        .amountContainer {
+   
+            .measure {
+                color: $button-bg-color;
+                font-size: 20px;
+                font-weight: 800;
+            }
+
+            .unit {
+                font-size: 13px;
+                color: $button-bg-color;
+                font-weight: 800;
+            }
         }
 
         p {

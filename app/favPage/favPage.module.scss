@@ -6,10 +6,10 @@
     padding-inline: 30px;
     padding-bottom: 30px;
     padding-top: 80px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 280px;
+    align-items: stretch;
     gap: 20px;
 }
 
@@ -22,6 +22,7 @@
 
 .cardWrapper {
     position: relative;
+    height: 100%;
 }
 
 .unbookmarkWrapper {
@@ -31,8 +32,8 @@
     cursor: pointer;
     transition: opacity 200ms linear;
     position: absolute;
-    top: 15px;
-    left: 18px;
+    bottom: 10px;
+    left: 10px;
 
     &:hover {
         opacity: 0.92;
